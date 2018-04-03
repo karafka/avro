@@ -33,6 +33,20 @@ App.consumer_groups.draw do
 end
 ```
 
+### Example with a Codec
+
+```ruby
+Karafka::Parsers::Avro.schemas_path = 'app/schemas'
+
+App.consumer_groups.draw do
+  consumer_group :my_consumer_group do
+    topic :my_topic do
+      consumer AvroConsumer
+      parser Karafka::Parsers::Avro.from_path('schema_name', codec: 'deflate')
+    end
+  end
+end
+```
 
 ### Example with Schema Registry
 
