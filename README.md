@@ -1,8 +1,6 @@
 # Karafka::Avro::Parser
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/karafka/avro/parser`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Karafka Parser for [Apache Avro](http://avro.apache.org/). It uses the great [AvroTurf](https://github.com/dasch/avro_turf) gem by under the hood.
 
 ## Installation
 
@@ -16,20 +14,50 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install karafka-avro-parser
-
 ## Usage
 
-TODO: Write usage instructions here
+Thanks to Karafka's modular design, you only have to define a `parser` the moment you draw your consumer groups. 
 
-## Development
+### Example with Schema Folder
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+Karafka::Parsers::Avro.schemas_path = 'app/schemas'
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+App.consumer_groups.draw do
+  consumer_group :my_consumer_group do
+    topic :my_topic do
+      consumer AvroConsumer
+      parser Karafka::Parsers::Avro.from_path('schema_name')
+    end
+  end
+end
+```
 
-## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/karafka-avro-parser.
+### Example with Schema Registry
+
+```ruby
+Karafka::Parsers::Avro.registry_url = 'http://my-registry:8081/'
+
+App.consumer_groups.draw do
+  consumer_group :my_consumer_group do
+    topic :my_topic do
+      consumer AvroConsumer
+      parser Karafka::Parsers::Avro.from_registry('schema_name')
+    end
+  end
+end
+```
+
+## Note on contributions
+
+First, thank you for considering contributing to Karafka! It's people like you that make the open source community such a great community!
+
+Each pull request must pass all the RSpec specs and meet our quality requirements.
+
+To check if everything is as it should be, we use [Coditsu](https://coditsu.io) that combines multiple linters and code analyzers for both code and documentation. Once you're done with your changes, submit a pull request.
+
+Coditsu will automatically check your work against our quality standards. You can find your commit check results on the [builds page](https://app.coditsu.io/karafka/commit_builds) of Karafka organization.
+
+[![coditsu](https://coditsu.io/assets/quality_bar.svg)](https://app.coditsu.io/karafka-avro/commit_builds)
+
