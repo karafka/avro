@@ -1,0 +1,18 @@
+{
+  "name": "person",
+  "type": "record",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "motto",
+      "type": "string"
+    }
+  ]
+}

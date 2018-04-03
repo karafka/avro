@@ -21,10 +21,10 @@ module Karafka
         Parser.new(AvroTurf::Messaging.new(registry_url: @registry_url), schema_name)
       end
 
-      def self.from_path(schema_name)
+      def self.from_path(schema_name, codec: nil)
         raise ArgumentError, 'You have to specify schemas_path first' if @schemas_path.nil?
 
-        Parser.new(AvroTurf.new(schemas_path: @schemas_path), schema_name)
+        Parser.new(AvroTurf.new(schemas_path: @schemas_path, codec: codec), schema_name)
       end
     end
   end
