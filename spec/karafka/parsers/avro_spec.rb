@@ -55,6 +55,13 @@ RSpec.describe Karafka::Parsers::Avro do
         expect(parser).to be_a(Karafka::Parsers::Avro::Parser)
         expect(parser.avro).to be_a(AvroTurf::Messaging)
       end
+
+      it 'returns a Parser instance when the schema name is not passed' do
+        parser = described_class.from_registry
+
+        expect(parser).to be_a(Karafka::Parsers::Avro::Parser)
+        expect(parser.avro).to be_a(AvroTurf::Messaging)
+      end
     end
   end
 end
