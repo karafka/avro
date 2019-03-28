@@ -16,7 +16,7 @@ And then execute:
 
 ## Usage
 
-Thanks to Karafka's modular design, you only have to define a `parser` the moment you draw your consumer groups. 
+Thanks to Karafka's modular design, you only have to define a `parser` the moment you draw your consumer groups.
 
 ### Example with Schema Folder
 
@@ -63,6 +63,8 @@ App.consumer_groups.draw do
 end
 ```
 
+*Note: `schema_name` is not specifically required when using a schema registry, as the schema id is contained within the message, it can be passed in optionally if you are using one schema per topic*
+
 ## Note on contributions
 
 First, thank you for considering contributing to Karafka! It's people like you that make the open source community such a great community!
@@ -74,4 +76,3 @@ To check if everything is as it should be, we use [Coditsu](https://coditsu.io) 
 Coditsu will automatically check your work against our quality standards. You can find your commit check results on the [builds page](https://app.coditsu.io/karafka/commit_builds) of Karafka organization.
 
 [![coditsu](https://coditsu.io/assets/quality_bar.svg)](https://app.coditsu.io/karafka-avro/commit_builds)
-

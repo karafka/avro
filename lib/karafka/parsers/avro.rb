@@ -15,7 +15,7 @@ module Karafka
         @schemas_path = schemas_path
       end
 
-      def self.from_registry(schema_name)
+      def self.from_registry(schema_name = nil)
         raise ArgumentError, 'You have to specify registry_path first' if @registry_url.nil?
 
         Parser.new(AvroTurf::Messaging.new(registry_url: @registry_url), schema_name)
