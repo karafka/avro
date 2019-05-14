@@ -1,18 +1,48 @@
-language: ruby
+services:
+  - docker
+
+dist: trusty
 sudo: false
-rvm:
-  - 2.3.0
-  - 2.3.1
-  - 2.3.2
-  - 2.3.3
-  - 2.3.4
-  - 2.4.0
-  - 2.4.1
-  - 2.4.2
-  - 2.5.0
-  - jruby-head
-script: bundle exec rspec spec/
-env:
-  global:
-    - JRUBY_OPTS='--debug'
-install: bundle install --jobs=3 --retry=3
+cache: bundler
+
+git:
+  depth: false
+
+test: &test
+  stage: Test
+  language: ruby
+  before_install:
+    - gem install bundler
+    - gem update --system
+  script: bundle exec rspec
+
+jobs:
+  include:
+    - <<: *test
+      rvm: 2.6.3
+    - <<: *test
+      rvm: 2.5.5
+    - <<: *test
+      rvm: 2.4.5
+
+    - stage: coditsu
+      language: ruby
+      rvm: 2.6.3
+      before_install:
+        - gem update --system
+        - gem install bundler
+      before_script:
+        - docker create -v /sources --name sources alpine:3.4 /bin/true
+        - docker cp ./ sources:/sources
+      script: >
+        docker run
+        -e CODITSU_API_KEY
+        -e CODITSU_API_SECRET
+        -e CODITSU_REPOSITORY_ID
+        -e CODITSU_BUILD_BRANCH=$TRAVIS_BRANCH
+        --volumes-from sources
+        coditsu/build-runner:latest
+
+stages:
+  - coditsu
+  - test
