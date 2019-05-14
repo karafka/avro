@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Kacper Madej']
   spec.email         = %w[kacperoza@gmail.com]
   spec.homepage      = 'https://github.com/karafka/avro'
-  spec.summary       = %q{Apache Avro support for Karafka}
-  spec.description   = %q{}
+  spec.summary       = 'Apache Avro support for Karafka'
+  spec.description   = ''
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
