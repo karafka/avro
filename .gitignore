@@ -13,3 +13,4 @@
 .rspec_status
 
 *.gem
+.coditsu/local.yml
