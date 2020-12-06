@@ -13,7 +13,7 @@ GEM
       avro (>= 1.7.7, < 1.10)
       excon (~> 0.45)
     diff-lcs (1.4.4)
-    excon (0.78.0)
+    excon (0.78.1)
     multi_json (1.15.0)
     rake (13.0.1)
     rspec (3.10.0)
