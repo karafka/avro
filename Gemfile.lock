@@ -15,7 +15,7 @@ GEM
     diff-lcs (1.4.4)
     excon (0.78.1)
     multi_json (1.15.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -41,4 +41,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   2.2.2
+   2.2.3
