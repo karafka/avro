@@ -13,7 +13,7 @@ GEM
       avro (>= 1.7.7, < 1.10)
       excon (~> 0.45)
     diff-lcs (1.4.4)
-    excon (0.78.1)
+    excon (0.79.0)
     multi_json (1.15.0)
     rake (13.0.3)
     rspec (3.10.0)
@@ -25,10 +25,10 @@ GEM
     rspec-expectations (3.10.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
-    rspec-mocks (3.10.1)
+    rspec-mocks (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
-    rspec-support (3.10.1)
+    rspec-support (3.10.2)
 
 PLATFORMS
   ruby
@@ -41,4 +41,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   2.2.5
+   2.2.8
