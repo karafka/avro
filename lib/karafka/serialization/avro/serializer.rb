@@ -8,15 +8,11 @@ module Karafka
     module Avro
       # Default Karafka Avro serializer for writing avro data
       class Serializer
-        def self.from_registry(schema_name, version)
+        def self.from_registry(schema_name, version = nil)
           @registry_url = Karafka::Serialization::Avro.registry_url
           raise ArgumentError, 'You have to specify registry_path first' if @registry_url.nil?
 
-          Serializer.new(
-            AvroTurf::Messaging.new(registry_url: @registry_url),
-            schema_name: schema_name,
-            version: version
-          )
+          Serializer.new(AvroTurf::Messaging.new(registry_url: @registry_url), schema_name: schema_name, version: version)
         end
 
         def self.from_registry_with_subject(subject, version)
@@ -48,8 +44,8 @@ module Karafka
           else
             avro.encode(content, schema_name: schema_name)
           end
-        rescue Error => e
-          raise ::Karafka::Errors::SerializationError, e
+          rescue StandardError => e
+            raise ::Karafka::Errors::SerializationError, e
         end
       end
     end
