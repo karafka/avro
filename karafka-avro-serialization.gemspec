@@ -3,13 +3,13 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'karafka/parsers/avro/version'
+require 'karafka/serialization/avro/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'karafka-avro-parser'
-  spec.version       = Karafka::Parsers::Avro::VERSION
-  spec.authors       = ['Kacper Madej']
-  spec.email         = %w[kacperoza@gmail.com]
+  spec.name          = 'karafka-avro-serialization'
+  spec.version       = Karafka::Serialization::Avro::VERSION
+  spec.authors       = ['Kacper Madej', 'Marcel Hoppe']
+  spec.email         = %w[kacperoza@gmail.com m.hoppe@newsaktuell.de]
   spec.homepage      = 'https://github.com/karafka/avro'
   spec.summary       = 'Apache Avro support for Karafka'
   spec.description   = ''
@@ -22,7 +22,8 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.5.0'
 
-  spec.add_dependency 'avro_turf', '~> 0.8'
+  spec.add_dependency 'avro_turf', '~> 1.3'
+  spec.add_dependency 'karafka', '~> 1.4'
 
   spec.add_development_dependency 'bundler', '~> 2'
   spec.add_development_dependency 'rake'

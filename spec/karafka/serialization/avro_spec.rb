@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Karafka::Parsers::Avro do
+RSpec.describe Karafka::Serialization::Avro do
   let(:schema) { 'person' }
 
   before do
@@ -8,7 +8,7 @@ RSpec.describe Karafka::Parsers::Avro do
     described_class.schemas_path = nil
   end
 
-  describe '.from_path' do
+  xdescribe '.from_path' do
     subject(:from_path) { described_class.from_path(schema) }
 
     let(:schemas_path) { 'spec/fixtures/schemas' }
@@ -20,7 +20,7 @@ RSpec.describe Karafka::Parsers::Avro do
     context 'when configured' do
       before { described_class.schemas_path = schemas_path }
 
-      it { is_expected.to be_a(Karafka::Parsers::Avro::Parser) }
+      it { is_expected.to be_a(Karafka::Serialization::Avro::Serializer) }
       it { expect(from_path.avro).to be_a(AvroTurf) }
 
       context 'when codec is passed' do
@@ -40,7 +40,7 @@ RSpec.describe Karafka::Parsers::Avro do
     end
   end
 
-  describe '.from_registry' do
+  xdescribe '.from_registry' do
     subject(:from_registry) { described_class.from_registry(schema) }
 
     let(:registry_url) { 'http://my-registry:8081' }
