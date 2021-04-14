@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Karafka
-  module Parsers
+  module Serialization
     module Avro
-      VERSION = '0.2.0'
+      VERSION = '0.3.0'
     end
   end
 end
