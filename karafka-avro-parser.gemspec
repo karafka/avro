@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'avro_turf', '~> 0.8'
 
-  spec.add_development_dependency 'bundler', '~> 2'
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
 end
