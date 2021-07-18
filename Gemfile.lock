@@ -13,7 +13,7 @@ GEM
       avro (>= 1.7.7, < 1.10)
       excon (~> 0.45)
     diff-lcs (1.4.4)
-    excon (0.84.0)
+    excon (0.85.0)
     multi_json (1.15.0)
     rake (13.0.6)
     rspec (3.10.0)
@@ -31,6 +31,8 @@ GEM
     rspec-support (3.10.2)
 
 PLATFORMS
+  x86_64-darwin
+  x86_64-darwin-19
   x86_64-linux
 
 DEPENDENCIES
