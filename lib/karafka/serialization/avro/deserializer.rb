@@ -29,7 +29,7 @@ module Karafka
 
         def call(params)
           params.raw_payload.nil? ? nil : avro.decode(params.raw_payload, schema_name: schema_name)
-        rescue StandardError => e
+        rescue AvroTurf::Error => e
           raise Karafka::Errors::DeserializationError, e
         end
       end

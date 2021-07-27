@@ -44,7 +44,7 @@ module Karafka
           else
             avro.encode(content, schema_name: schema_name)
           end
-          rescue StandardError => e
+          rescue AvroTurf::Error => e
             raise ::Karafka::Errors::SerializationError, e
         end
       end
