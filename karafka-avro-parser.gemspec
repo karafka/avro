@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   end
   spec.require_paths = %w[lib]
 
-  spec.required_ruby_version = '>= 2.6'
+  spec.required_ruby_version = '>= 2.7'
 
   spec.add_dependency 'avro_turf', '~> 0.8'
 
