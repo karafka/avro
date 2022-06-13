@@ -7,20 +7,20 @@ require_relative 'avro/serializer'
 module Karafka
   module Serialization
     module Avro
-      def self.registry_url=(registry_url)
-        @registry_url = registry_url
-      end
-
-      def self.schemas_path=(schemas_path)
-        @schemas_path = schemas_path
-      end
-
-      def self.registry_url
-        @registry_url
-      end
-
-      def self.schemas_path
-        @schemas_path
+      mattr_accessor :registry_url, :schemas_path,
+                     :user, :password,
+                     :ssl_ca_file,
+                     :client_cert, :client_key, :client_key_pass,
+                     :client_cert_data, :client_key_data
+      
+      def self.get_avro_with_registry
+        raise ArgumentError, 'You have to specify registry_path first' if registry_url.nil?
+        
+        AvroTurf::Messaging.new(registry_url:, schemas_path:,
+                                user: , password:,
+                                ssl_ca_file:,
+                                client_cert:, client_key:, client_key_pass:,
+                                client_cert_data:, client_key_data:)
       end
     end
   end
