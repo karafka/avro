@@ -7,10 +7,7 @@ module Karafka
     module Avro
       class Deserializer
         def self.from_registry(schema_name = nil)
-          @registry_url = Karafka::Serialization::Avro.registry_url
-          raise ArgumentError, 'You have to specify registry_path first' if @registry_url.nil?
-
-          Deserializer.new(AvroTurf::Messaging.new(registry_url: @registry_url), schema_name)
+          Deserializer.new(Karafka::Serialization::Avro.get_avro_with_registry, schema_name)
         end
 
         def self.from_path(schema_name, codec: nil)
