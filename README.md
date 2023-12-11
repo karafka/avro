@@ -1,5 +1,13 @@
 # Karafka::Avro::Parser
 
+## Deprecation notice
+
+This gem is **no longer needed** to use Avro with Karafka.
+
+Please refer to the Karafka [official documentation](https://karafka.io/docs/Deserialization/#apache-avro) describing how to integrate Avro.
+
+## About
+
 Karafka Parser for [Apache Avro](http://avro.apache.org/). It uses the great [AvroTurf](https://github.com/dasch/avro_turf) gem by under the hood.
 
 ## Installation
